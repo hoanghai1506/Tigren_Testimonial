@@ -1,0 +1,314 @@
+<?php $data = $block ->getTestimonial() ?>
+<style>
+    /* ========== 00. General Styling ========== */
+
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+    * {
+        box-sizing: border-box;
+        outline: 0;
+        transition: all 0.3s ease;
+    }
+
+    body {
+        margin: 0;
+        margin-top: 60px;
+        padding: 0;
+        font-family: "Open Sans", "Noto Sans", HelveticaNeueCyr, Helvetica, sans-serif;
+        line-height: 1.68em;
+        color: #333333;
+        background: #fafafa;
+    }
+
+    blockquote {
+        padding: 0;
+        margin: 0;
+    }
+
+    section.t-bq-section {
+        padding: 30px;
+        margin-bottom: 60px;
+    }
+
+    .t-bq-wrapper.t-bq-wrapper-boxed {
+        max-width: 576px;
+        margin: 0 auto;
+    }
+
+    .t-bq-wrapper.t-bq-wrapper-fullwidth {
+        max-width: 100%;
+    }
+
+    .t-bq-wrapper .t-bq-quote {
+        padding: 20px;
+    }
+
+
+
+
+
+
+
+
+
+
+    /* ========== 01. Emma ========== */
+
+    .t-bq-quote-emma {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        min-height: 250px;
+        background: #ffffff;
+        padding: 0!important;
+        align-items: stretch;
+        border-radius: 20px;
+        box-shadow: 2px 2px 25px #cecece;
+    }
+
+    .t-bq-quote-emma .t-bq-quote-emma-qmark {
+        position: absolute;
+        top: -30px;
+        left: calc(50% - 30px);
+        background: #ffffff;
+        width: 60px;
+        height: 60px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Impact, Garamond, Georgia, serif;
+        font-size: 3em;
+        color: #666666;
+        line-height: 60px;
+        user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none;
+        border-top: 2px solid #eeeeee;
+    }
+
+    .t-bq-quote-emma .t-bq-quote-emma-qmark span {
+        padding-top: 0.25em;
+    }
+
+    .t-bq-quote-emma .t-bq-quote-emma-userpic {
+        flex-basis: 150px;
+        width: 150px;
+        min-width: 150px;
+        max-height: 300px;
+        background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/strug.jpg") center center no-repeat;
+        background-size: cover;
+        border-radius: 20px 0 0 20px;
+    }
+
+    .t-bq-quote-emma .t-bq-quote-emma-base {
+        flex-basis: calc(100% - 150px);
+        padding: 60px 30px 45px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .t-bq-quote-emma .t-bq-quote-emma-base .t-bq-quote-emma-text {
+        font-size: 0.85em;
+        line-height: 1.8em;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    .t-bq-quote-emma .t-bq-quote-emma-base .t-bq-quote-emma-text:after {
+        content: "\2014\00A0" attr(cite);
+        display: block;
+        font-size: 0.8em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+
+        .t-bq-quote-emma {
+            flex-direction: column;
+        }
+
+        .t-bq-quote-emma .t-bq-quote-emma-base {
+            padding-top: 0;
+        }
+
+        .t-bq-quote-emma .t-bq-quote-emma-userpic {
+            border-radius: 20px;
+            height: 150px;
+            margin: 40px auto 20px auto;
+        }
+
+        .t-bq-quote-emma .t-bq-quote-emma-base .t-bq-quote-emma-text {
+            font-size: 1em;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    /* ========== 02. Sophia ========== */
+
+    .t-bq-quote-sophia .t-bq-quote-sophia-base {
+        background: white;
+        padding: 20px 40px 40px 40px;
+        border-radius: 10px;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .t-bq-quote-sophia .t-bq-quote-sophia-base:after {
+        content: "";
+        position: absolute;
+        background: #ffffff;
+        transform: rotate(45deg);
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        bottom: -15px;
+        left: calc(50% - 15px);
+        z-index: -1;
+    }
+
+    .t-bq-quote-sophia .t-bq-quote-sophia-author {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .t-bq-quote-sophia .t-bq-quote-sophia-author cite {
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        font-size: 10pt;
+        font-weight: bold;
+    }
+
+    .t-bq-quote-sophia .t-bq-quote-sophia-userpic {
+        width: 100px;
+        height: 100px;
+        background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/strug.jpg") center center no-repeat;
+        background-size: cover;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+
+
+
+
+
+
+
+
+
+    /* ========== 03. Jenny ========== */
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-base {
+        background: white;
+        padding: 20px 40px 40px 40px;
+        border-radius: 10px;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-base:after {
+        content: "";
+        position: absolute;
+        background: #ffffff;
+        transform: rotate(45deg);
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        bottom: -15px;
+        left: calc(100% - 100px - 15px);
+        z-index: -1;
+    }
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-base .t-bq-quote-jenny-text {
+        text-indent: 5em;
+        line-height: 1.8em;
+    }
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-base .t-bq-quote-jenny-text:before {
+        content: "\201C";
+        position: absolute;
+        left: -55px;
+        top: 55px;
+        font-family: Georgia, serif;
+        font-size: 160pt;
+        color: #cecece;
+
+    }
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-meta {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-meta .t-bq-quote-jenny-meta-info {
+        flex-basis: calc(100% - 50px);
+    }
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-meta .t-bq-quote-jenny-author,
+    .t-bq-quote-jenny .t-bq-quote-jenny-meta .t-bq-quote-jenny-source {
+        text-align: right;
+        flex-basis: 100%;
+        padding-right: 15px;
+        line-height: 1.38em;
+    }
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-meta .t-bq-quote-jenny-author cite {
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        font-size: 10pt;
+        font-weight: bold;
+    }
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-meta .t-bq-quote-jenny-source span {
+        font-size: 11pt;
+    }
+
+    .t-bq-quote-jenny .t-bq-quote-jenny-meta .t-bq-quote-jenny-userpic {
+        flex-basis: 50px;
+        flex-grow: 0;
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+        border-radius: 50%;
+        margin-left: auto;
+    }
+</style>
+<?php foreach ($data as $data) { ?>
+<section class="t-bq-section" id="jenny">
+    <div class="t-bq-wrapper t-bq-wrapper-boxed">
+        <div class="t-bq-quote t-bq-quote-jenny">
+            <div class="t-bq-quote-jenny-base">
+                <blockquote class="t-bq-quote-jenny-text" cite="Strugatsky brothers">
+                    <p><?php echo $data['message'] ?></p>
+                </blockquote>
+            </div>
+            <div class="t-bq-quote-jenny-meta">
+                <div class="t-bq-quote-jenny-meta-info">
+                    <div class="t-bq-quote-jenny-author"><cite><?php echo $data['name']?></cite></div>
+                    <div class="t-bq-quote-jenny-source"><span><?php echo $data['company']?></span></div>
+                </div>
+                <img src="<?php echo $block->getUrl("pub/media/catalog/tmp/category/") . $data['Profile_image'] ?>" class="t-bq-quote-jenny-userpic" />
+
+            </div>
+        </div>
+    </div>
+</section>
+<?php } ?>

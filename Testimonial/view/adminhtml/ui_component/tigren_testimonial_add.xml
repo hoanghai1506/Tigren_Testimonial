@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tigren_testimonial_add.tigren_testimonial_listing_data_source</item>
+            <item name="deps" xsi:type="string">tigren_testimonial_add.tigren_testimonial_listing_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Testimonial Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">tigren_testimonial_add</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Tigren\Testimonial\Block\Adminhtml\BackButton"/>
+<!--            <button name="delete" class="Tigren\Blog\Block\Adminhtml\Post\Edit\DeleteButton"/>-->
+            <button name="save" class="Tigren\Testimonial\Block\Adminhtml\SaveButton"/>
+<!--            <button name="save_and_continue" class="Tigren\Blog\Block\Adminhtml\Post\Edit\SaveAndContinueButton"/>-->
+        </buttons>
+        <namespace>tigren_testimonial_add</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>tigren_testimonial_add.tigren_testimonial_listing_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="tigren_testimonial_listing_data_source">
+
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Tigren\Testimonial\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">tigren_testimonial_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">testimonial_id</argument>
+            <argument name="requestFieldName" xsi:type="string">testimonial_id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+    </dataSource>
+    <fieldset name="testimonial">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Add testimonial</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+<!--        <field name="testimonial_id">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">text</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Testimonial Id</item>-->
+<!--                    <item name="formElement" xsi:type="string">input</item>-->
+<!--                    <item name="source" xsi:type="string">testimonial</item>-->
+<!--                    <item name="dataScope" xsi:type="string">testimonial_id</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">testimonial</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                </item>
+            </argument>
+        </field>
+        <field name="email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Email</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">testimonial</item>
+                    <item name="dataScope" xsi:type="string">email</item>
+                </item>
+            </argument>
+        </field>
+            <field name="message" sortOrder="10" formElement="wysiwyg" template="ui/form/field">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">page</item>
+                        <item name="wysiwygConfigData" xsi:type="array">
+                            <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                            <item name="toggle_button" xsi:type="boolean">true</item>
+                            <item name="height" xsi:type="string">200px</item>
+<!--                            <item name="add_variables" xsi:type="boolean">true</item>-->
+<!--                            <item name="add_widgets" xsi:type="boolean">true</item>-->
+<!--                            <item name="add_images" xsi:type="boolean">true</item>-->
+<!--                            <item name="add_directives" xsi:type="boolean">true</item>-->
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <label translate="true">message</label>
+                    <dataScope>message</dataScope>
+                </settings>
+                <formElements>
+                    <wysiwyg>
+                        <settings>
+                            <rows>5</rows>
+                            <wysiwyg>true</wysiwyg>
+                        </settings>
+                    </wysiwyg>
+                </formElements>
+            </field>
+
+        <field name="status" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">status</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>boolean</dataType>
+                <label translate="true">Status</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="company">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">company</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">testimonial</item>
+                    <item name="dataScope" xsi:type="string">company</item>
+                </item>
+            </argument>
+        </field>
+<!--        <field name="Profile_image">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="dataType" xsi:type="string">text</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">Image</item>-->
+<!--                    <item name="formElement" xsi:type="string">input</item>-->
+<!--                    <item name="source" xsi:type="string">testimonial</item>-->
+<!--                    <item name="dataScope" xsi:type="string">Profile_image</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </field>-->
+<!--        <field name="Profile_image" formElement="fileUploader">-->
+<!--            <settings>-->
+<!--                <label translate="true">image</label>-->
+<!--            </settings>-->
+<!--            <formElements>-->
+<!--                <fileUploader>-->
+<!--                    <settings>-->
+<!--                        <uploaderConfig>-->
+<!--                            <param xsi:type="url" name="url" path="testimonial/image/upload"/>-->
+<!--                        </uploaderConfig>-->
+<!--                    </settings>-->
+<!--                </fileUploader>-->
+<!--            </formElements>-->
+<!--        </field>-->
+        <field name="Profile_image" sortOrder="40" formElement="imageUploader">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">category</item>
+                </item>
+            </argument>
+            <settings>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <dataType>string</dataType>
+                <label translate="true">Category Image</label>
+                <visible>true</visible>
+                <required>false</required>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <required>false</required>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="catalog/category_image/upload"/>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_Catalog/image-preview</previewTmpl>
+                        <openDialogTitle>Media Gallery</openDialogTitle>
+                        <initialMediaGalleryOpenSubpath>catalog/category</initialMediaGalleryOpenSubpath>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="created_at">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Create at</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">testimonial</item>
+                    <item name="dataScope" xsi:type="string">Create at</item>
+                </item>
+            </argument>
+        </field>
+        <field name="rating">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">rating</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">testimonial</item>
+                    <item name="dataScope" xsi:type="string">rating</item>
+                </item>
+            </argument>
+        </field>
+
+    </fieldset>
+</form>

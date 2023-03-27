@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tigren_testimonial_listing.tigren_testimonial_listing_data_source
+            </item>
+            <item name="deps" xsi:type="string">tigren_testimonial_listing.tigren_testimonial_listing_data_source</item>
+        </item>
+
+    </argument>
+    <settings>
+        <spinner>tigren_testimonial_columns</spinner>
+        <deps>
+            <dep>tigren_testimonial_listing.tigren_testimonial_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/add"/>
+                <class>primary</class>
+                <label translate="true">Add new Testimonial</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="tigren_testimonial_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">testimonial_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <!--        <aclResource>Tigren_Blog::Post</aclResource>-->
+        <dataProvider name="tigren_testimonial_listing_data_source"
+                      class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>testimonial_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <filterSearch name="fulltext"/>
+        <columnsControls name="columns_controls"/>
+        <paging name="listing_paging"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete Testimonial</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="testimonial/testimonial/massDelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Testimonial</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete
+                                selected items?
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+
+
+    <!--    <dataSource name="tigren_testimonial_listing_data_source">-->
+    <!--        <argument name="dataProvider" xsi:type="configurableObject">-->
+    <!--            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>-->
+    <!--            <argument name="name" xsi:type="string">tigren_testimonial_listing_data_source</argument>-->
+    <!--            <argument name="primaryFieldName" xsi:type="string">testimonial_id</argument>-->
+    <!--            <argument name="requestFieldName" xsi:type="string">testimonial_id</argument>-->
+    <!--            <argument name="data" xsi:type="array">-->
+    <!--                <item name="config" xsi:type="array">-->
+    <!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>-->
+    <!--                    <item name="update_url" xsi:type="url" path="mui/index/render"/>-->
+    <!--                    <item name="storageConfig" xsi:type="array">-->
+    <!--                        <item name="indexField" xsi:type="string">testimonial_id</item>-->
+    <!--                    </item>-->
+    <!--                </item>-->
+    <!--            </argument>-->
+    <!--        </argument>-->
+    <!--    </dataSource>-->
+    <columns name="tigren_testimonial_columns">
+        <settings>
+            <editorConfig>
+                <param name="selectProvider" xsi:type="string">
+                    tigren_testimonial_listing.tigren_testimonial_listing.tigren_testimonial_columns.ids
+                </param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="indexField" xsi:type="string">testimonial_id</param>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="Tigren_Testimonial/Testimonial/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                        tigren_testimonial_listing.tigren_testimonial_listing.tigren_testimonial_columns_editor
+                    </item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>testimonial_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="testimonial_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="post_image" class="Tigren\Testimonial\Ui\Component\Listing\Column\Thumbnail">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="altField" xsi:type="string">name</item>
+                    <item name="has_preview" xsi:type="string">1</item>
+                    <item name="label" xsi:type="string" translate="true">Image</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="height" xsi:type="string">300px</item>
+                </item>
+            </argument>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="message">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">message</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="company">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Company</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <!--        <column name="Profile_image" class="Magento\Catalog\Ui\Component\Listing\Columns\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="20">-->
+        <!--            <settings>-->
+        <!--                <altField>name</altField>-->
+        <!--                <hasPreview>1</hasPreview>-->
+        <!--                <addField>true</addField>-->
+        <!--                <label translate="true">Profile image</label>-->
+        <!--                <sortable>false</sortable>-->
+        <!--            </settings>-->
+        <!--        </column>-->
+        <column name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Tigren\Testimonial\Ui\Component\Listing\Column\Status</item><item name="config" xsi:type="array">
+                <item name="sortOrder" xsi:type="number">60</item>
+                <item name="filter" xsi:type="string">select</item> <item name="label" translate="true" xsi:type="string">Status</item>
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                <item name="dataType" xsi:type="string">select</item>
+                <item name="editor" xsi:type="array">
+                    <item name="editorType" xsi:type="string">select</item>
+                </item>
+            </item>
+            </argument>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">create_at</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+<!--        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="filter" xsi:type="string">dateRange</item>-->
+<!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>-->
+<!--                    <item name="dataType" xsi:type="string">date</item>-->
+<!--                    <item name="label" xsi:type="string" translate="true">update_at</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--        </column>-->
+        <actionsColumn name="actions" class="Tigren\Testimonial\Ui\Component\Listing\Column\PostActions">
+            <settings>
+                <indexField>testimonial_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

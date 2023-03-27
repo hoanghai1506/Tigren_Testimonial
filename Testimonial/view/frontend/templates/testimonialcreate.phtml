@@ -1,0 +1,67 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    input[type="radio"],
+    label {
+        display: inline-block;
+        margin-right: 5px;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    input[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+</style>
+<h1>Add Testimonial</h1>
+<form action="<?php echo $block->getBaseUrl().'testimonial/index/save';?>" method="post" enctype="multipart/form-data" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="company">Company:</label>
+    <input type="text" id="company" name="company">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required></textarea>
+    <label for="rating">Rating:</label>
+    <input type="radio" id="rating1" name="rating" value="1">
+    <label for="rating1">1</label>
+    <input type="radio" id="rating2" name="rating" value="2">
+    <label for="rating2">2</label>
+    <input type="radio" id="rating3" name="rating" value="3" checked>
+    <label for="rating3">3</label>
+    <input type="radio" id="rating4" name="rating" value="4">
+    <label for="rating4">4</label>
+    <input type="radio" id="rating5" name="rating" value="5">
+    <label for="rating5">5</label> <br/>
+    <label for="profile_image">Profile Image:</label>
+    <input type="file" id="Profile_image" name="Profile_image">
+    <input type="hidden" id="status" name="status" value="0"> <br/>
+    <input type="submit" value="Add Testimonial">
+</form>
+
+
